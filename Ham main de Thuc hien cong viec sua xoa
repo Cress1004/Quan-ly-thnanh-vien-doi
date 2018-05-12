@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+
+int main(int argc, char const *argv[])
+{
+   // day cac ban dat lenh xoa man hinh nhe vi minh dung ubuntu nen lenh hoi khac cua window 
+
+   
+   int LuaChon;
+   int SinhVien;
+   char N;
+   printf("Tong so sinh vien can quan ly la:\n");
+   scanf("%d",&SinhVien);
+   printf("------------------***-----------------\n\n");
+   
+   printf("Nhap thong tin thanh vien:\n");
+
+      // Ham nhap thong tin thanh vien
+   
+   do{
+      printf("                MENU                   \n");
+      printf(" ______________________________________\n");
+      printf("|1:Chinh sua thong tin thanh vien.    | \n");
+      printf("|2:Them thanh vien.                   |\n");
+      printf("|3:Xoa thanh vien                     |\n");
+      printf("|_____________________________________|\n");
+      printf("Chon:\n");
+      scanf("%d",&LuaChon);
+      switch(LuaChon)
+      {
+         case 1:
+               printf("Chin sua\n");
+               //ham chinh sua thong tin
+               break ;
+         case 2:
+               printf("Them sinh vien\n");
+               // Ham Them thanh vien
+               break ;
+         case 3:
+               printf("Xoa sinh vien\n");
+               //ham xoa thanh vien vao day
+               break;
+         default:
+               printf("Chon lai:\n");
+      }
+      printf("Bam y de tiep tuc\n");
+      scanf("%s",&N);
+      
+
+
+      
+   }while(N=='y'||N=='Y');
+
+
+   return 0;
+}
