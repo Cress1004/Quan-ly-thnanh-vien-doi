@@ -13,15 +13,13 @@ void input(member *tv)
 {
 	printf("Nhap vao so hieu thanh vien: ");
 	scanf("%d", &tv->ID);
-	while (getchar()!='\n');
 	printf("Nhap vao ten thanh vien: ");
+	fflush(stdin);
 	gets(tv->name);
 	printf("Nhap vao tuoi cua thanh vien: ");
 	scanf("%d", &tv->age);
-	while (getchar()!='\n');
 	printf("Nhap vao group_ID: ");
 	scanf("%d", &tv->group_ID);
-	while (getchar()!='\n');
 }
 
 void output(member *tv)
@@ -29,14 +27,20 @@ void output(member *tv)
 	printf("%-35s\t%-7d\t%-5d\t%-9d\n",tv->name, tv->age, tv->ID, tv->group_ID);
 }
 
-int find(member *tv, char *ten)
-{
-	int count=-1;
-	while (strcmp(tv->name, ten)!=0);
- 	{
-	tv++;
-	count ++;
+int find(member *tv, int size)
+{	int id;
+	int count,i, flag=0;
+	do{scanf("%d", &id);
+	for (i=0; i<size; i++)
+	{
+		if (id==tv->ID)
+		{
+			flag=1; count=i; break;
+		}
 	}
+	if (flag==0) printf("Ma ID nhap vao khong hop le!");
+	}
+	while (flag==0);
 	return count;
 }
 
@@ -90,7 +94,6 @@ void main()
 		case '1': printf("Nhap vao thong tin thanh vien\n");
 			printf("Nhap vao so thanh vien nhap vao: ");
 			scanf("%d", &stt);
-			while (getchar()!='\n');
 			for (i=0; i<stt; i++)
 				{printf("Nhap vao thong tin thanh vien thu %d\n", i+1);
 				input(&tv[i]);}
@@ -109,27 +112,24 @@ void main()
 			printf("\n");
 			break;
 		case '4': printf("Tim kiem thong tin thanh vien\n");
-			printf("Nhap vao ten thanh vien can tim: ");
-			gets(hoten);
+			printf("Nhap vao ID thanh vien can tim: ");
 			printf("%-35s\t%-7s\t%-5s\t%-9s\n", "Ho ten", "Tuoi", "ID", "Group_ID");
-			output(&tv[find( tv, hoten)]); 
+			output(&tv[find( tv, stt)]); 
 			printf("\n");
 			break;
 		case '5': printf("Xoa thanh vien:\n");
-			printf("Nhap vao ten thanh vien can xoa: ");
-			gets(hoten);
+			printf("Nhap vao ID thanh vien can xoa: \n");
 			int num;
 			stt--;
-			num=find(tv, hoten);
+			num=find(tv, stt);
 			for (i=num; i<stt;i++)
 				del(&tv[i]);
 			printf("Da xoa thanh vien!\n");
 			printf("\n");
 			break;
 		case '6': printf("Chinh sua thong tin thanh vien:\n"); 
-			printf("Nhap ten thanh vien can sua thong tin: ");
-			gets(hoten);
-			num=find(tv, hoten);
+			printf("Nhap ID thanh vien can sua thong tin: ");
+			num=find(tv, stt);
 			edit(&tv[num]);
 			printf("Da sua xong thong tin thanh vien! \n");
 			printf("\n");
