@@ -2,6 +2,7 @@
 #include<string.h>
 #define SIZE 100
 
+
 struct member{
   char name[51];
   int age;
@@ -16,6 +17,12 @@ void chuanhoa(char *str)
 {
    int i;
   //xoa ki tu trang o dau chuoi.
+
+void chuanhoa(char *str)
+{
+   int i;
+  //xoa ki tu trang o dau chuoi
+
   while(str[0]==' ')
     {for(i=0; i<(strlen(str)); i++)
 	{str[i]=str[i+1];
@@ -50,6 +57,20 @@ void chuanhoa(char *str)
 	 }
     }
 }
+
+
+
+typedef struct member{
+  char name[51];
+  int age;
+  int ID;
+  int group_ID;
+};
+typedef struct member member;
+
+member tv[SIZE];
+int stt=0;
+
 
 void swap(member *tv1, member *tv2)
 {
